@@ -1,8 +1,7 @@
 /**
  * @typedef Plugin
  * @type {object}
- * @property {object} [provides] - Methods to add to the class prototype
- * @property {object} [providesStatic] - Methods to add to the class itself
+ * @property {object} [provides] - Methods to add to the class prototype and/or class itself
  * @property {object} [hooks] - Hooks to add to the class
  * @property {Plugin[]} [dependencies] - Plugins that this plugin depends on
  */
@@ -67,9 +66,15 @@ export function addPlugin (Class, ...plugin) {
 	Class[plugins].add(plugin);
 
 	if (plugin.provides) {
-		extend(Class.prototype, plugin.provides);
+		let { constructor: providesStatic, ...provides } = plugin.provides;
+		extend(Class.prototype, provides);
+
+		if (providesStatic) {
+			extend(Class, providesStatic);
+		}
 	}
 
+	// Older form for providing static methods
 	if (plugin.providesStatic) {
 		extend(Class, plugin.providesStatic);
 	}

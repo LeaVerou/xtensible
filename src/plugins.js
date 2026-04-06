@@ -27,7 +27,7 @@ export function hasPlugin (Class, plugin) {
 		return true;
 	}
 
-	return Class[plugins]?.has(plugin);
+	return Class[plugins]?.has(plugin) ?? false;
 }
 
 /**

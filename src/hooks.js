@@ -1,4 +1,5 @@
 import { getSupers, getSuper } from "./util/super.js";
+import { toUnderscoreCase } from "./util/strings.js";
 import Hook from "./hook.js";
 
 export default class Hooks {
@@ -122,8 +123,4 @@ export default class Hooks {
 
 		return { nameRaw, name, options };
 	}
-}
-
-function toUnderscoreCase (name) {
-	return name.replace(/[A-Z]/g, letter => `_${letter.toLowerCase()}`).replace(/-/g, "_");
 }

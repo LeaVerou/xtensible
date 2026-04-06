@@ -10,6 +10,7 @@
 import symbols from "get-symbols";
 import { defineOwnProperty } from "./util/own.js";
 import { getSuper } from "./util/super.js";
+import { extend } from "./util/objects.js";
 
 /**
  * Check if a plugin is installed on a class
@@ -79,15 +80,3 @@ export function addPlugin (Class, ...plugin) {
 }
 
 export { addPlugin as addPlugins };
-
-/**
- * Extend an object with the properties of another object
- * @param {Object} base
- * @param {Object} plugin
- */
-function extend (base, plugin) {
-	// TODO how to handle conflicts?
-	// TODO handle data properties separately?
-	let descriptors = Object.getOwnPropertyDescriptors(plugin);
-	Object.defineProperties(base, descriptors);
-}

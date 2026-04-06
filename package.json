@@ -2,7 +2,12 @@
 	"name": "xtensible",
 	"version": "0.0.0",
 	"description": "Pluggable classes with hooks and a plugin system",
-	"keywords": ["plugins", "hooks", "extensible", "classes"],
+	"keywords": [
+		"plugins",
+		"hooks",
+		"extensible",
+		"classes"
+	],
 	"homepage": "https://github.com/leaverou/xtensible/#readme",
 	"bugs": {
 		"url": "https://github.com/leaverou/xtensible/issues"
@@ -14,7 +19,14 @@
 	"license": "MIT",
 	"author": "Lea Verou",
 	"type": "module",
-	"main": "src/extensible.js",
+	"main": "src/index.js",
+	"exports": {
+		".": "./src/index.js",
+		"./util": "./src/util.js",
+		"./hooks": "./src/hooks.js",
+		"./plugins": "./src/plugins.js",
+		"./base": "./src/base.js"
+	},
 	"scripts": {
 		"release": "npm login && release-it",
 		"test": "echo \"Error: no test specified\" && exit 1"

@@ -1,7 +1,7 @@
 import { getSuperMethod } from "../src/util/super.js";
 import $hook from "./$hook.js";
 
-export const dependencies = [$hook];
+const dependencies = [$hook];
 
 const provides = {
 	// Called by the constructor

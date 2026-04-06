@@ -81,6 +81,13 @@ export function addPlugin (Class, ...plugin) {
 
 	if (plugin.hooks) {
 		let { hooks } = symbols;
+
+		if (!(hooks in Class)) {
+			defineOwnProperty(Class, hooks, function () {
+				return new Hooks(this);
+			});
+		}
+
 		Class[hooks].add(plugin.hooks);
 	}
 }

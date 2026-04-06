@@ -6,7 +6,7 @@
  * @property {Plugin[]} [dependencies] - Plugins that this plugin depends on
  */
 
-import symbols from "get-symbols";
+import symbols from "./symbols.js";
 import { defineOwnProperty } from "./util/own.js";
 import { getSuper } from "./util/super.js";
 import { extend } from "./util/objects.js";
@@ -24,13 +24,13 @@ export function hasPlugin (Class, plugin) {
 		return true;
 	}
 
-	let plugins = Class.symbols?.plugins ?? symbols.known.plugins;
+	let { plugins } = symbols;
 
 	return Class[plugins]?.has(plugin);
 }
 
 /**
- * Add a plugin to a class
+ * Add one or more plugins to a class
  * @param {FunctionConstructor} Class
  * @param {Plugin | Iterable<Plugin>} ...plugins - One or more plugins to add, in order
  * @returns {void}
@@ -53,7 +53,7 @@ export function addPlugin (Class, ...plugin) {
 		return;
 	}
 
-	let plugins = Class.symbols?.plugins ?? symbols.known.plugins;
+	let { plugins } = symbols;
 
 	if (plugin.dependencies) {
 		for (let dependency of plugin.dependencies) {

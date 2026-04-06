@@ -15,6 +15,10 @@ const provides = {
 		$hook (name, env, options) {
 			this[hooks].run(name, env, { context: this, ...options });
 		},
+
+		get hooks () {
+			return this[hooks];
+		},
 	},
 };
 

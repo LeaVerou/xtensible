@@ -124,8 +124,6 @@ export default class Hooks {
 	}
 }
 
-export { default as Hook } from "./hook.js";
-
 function toUnderscoreCase (name) {
 	return name.replace(/[A-Z]/g, letter => `_${letter.toLowerCase()}`).replace(/-/g, "_");
 }

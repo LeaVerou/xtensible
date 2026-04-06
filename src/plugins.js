@@ -68,7 +68,7 @@ export function addPlugin (Class, ...plugin) {
 		let { constructor: providesStatic, ...provides } = plugin.provides;
 		extend(Class.prototype, provides);
 
-		if (providesStatic) {
+		if (Object.hasOwn(plugin.provides, "constructor")) {
 			extend(Class, providesStatic);
 		}
 	}

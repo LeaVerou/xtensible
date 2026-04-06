@@ -11,6 +11,8 @@ import { defineOwnProperty } from "./util/own.js";
 import { getSuper } from "./util/super.js";
 import { extend } from "./util/objects.js";
 
+export const { plugins } = symbols;
+
 /**
  * Check if a plugin is installed on a class
  * @param {FunctionConstructor} Class
@@ -23,8 +25,6 @@ export function hasPlugin (Class, plugin) {
 	if (Super && hasPlugin(Super, plugin)) {
 		return true;
 	}
-
-	let { plugins } = symbols;
 
 	return Class[plugins]?.has(plugin);
 }
@@ -52,8 +52,6 @@ export function addPlugin (Class, ...plugin) {
 	if (hasPlugin(Class, plugin)) {
 		return;
 	}
-
-	let { plugins } = symbols;
 
 	if (plugin.dependencies) {
 		for (let dependency of plugin.dependencies) {

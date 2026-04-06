@@ -24,9 +24,8 @@
 		".": "./src/index.js",
 		"./util": "./src/util.js",
 		"./hooks": "./src/hooks.js",
-		"./plugins": "./src/plugins.js",
-		"./base": "./src/base.js",
-		"./symbols": "./src/symbols.js"
+		"./symbols": "./src/symbols.js",
+		"./plugins": "./plugins/index.js"
 	},
 	"scripts": {
 		"release": "npm login && release-it",

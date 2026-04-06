@@ -80,7 +80,8 @@ export function addPlugin (Class, ...plugin) {
 	}
 
 	if (plugin.hooks) {
-		Class.hooks.add(plugin.hooks);
+		let { hooks } = symbols;
+		Class[hooks].add(plugin.hooks);
 	}
 }
 

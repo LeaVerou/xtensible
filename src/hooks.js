@@ -1,6 +1,9 @@
 import { getSupers, getSuper } from "./util/super.js";
 import { toUnderscoreCase } from "./util/strings.js";
 import Hook from "./hook.js";
+import symbols from "./symbols.js";
+
+export const { hooks } = symbols;
 
 export default class Hooks {
 	/** @type {Map<string, Hook>} */

@@ -3,19 +3,18 @@
  * So meta!
  */
 
-import Hooks from "../hooks.js";
+import Hooks, { hooks } from "../hooks.js";
 import { getSuperMethod } from "../util/super.js";
 import { defineOwnProperty } from "../util/own.js";
 
 const provides = {
 	$hook (name, env, options) {
-		this.constructor.hooks.run(name, env, { context: this, ...options });
+		this.constructor[hooks].run(name, env, { context: this, ...options });
 	},
-};
 
 	constructor: {
 		$hook (name, env, options) {
-			this.hooks.run(name, env, { context: this, ...options });
+			this[hooks].run(name, env, { context: this, ...options });
 		},
 
 		/**
@@ -34,7 +33,7 @@ const provides = {
 };
 
 // Ensures that each class has its own hooks object
-defineOwnProperty(provides.constructor, "hooks", function () {
+defineOwnProperty(provides.constructor, hooks, function () {
 	return new Hooks(this);
 });
 

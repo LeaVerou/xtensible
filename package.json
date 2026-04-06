@@ -29,9 +29,10 @@
 	},
 	"scripts": {
 		"release": "npm login && release-it",
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"test": "npx htest test/index.js"
 	},
 	"devDependencies": {
+		"htest.dev": "^0.0.23",
 		"prettier": "~3.5.3",
 		"prettier-plugin-brace-style": "latest",
 		"prettier-plugin-merge": "latest",

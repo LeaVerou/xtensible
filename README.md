@@ -3,7 +3,7 @@
 A lightweight, nearly zero-dependency\* plugin system for JavaScript classes.
 Add elaborate plugin support to any class (or any JS object) — with automatic dependency resolution and inheritance support.
 
-\* Only dependency is [`get-symbols`](https://github.com/AshleyScirworthy/get-symbols), a tiny symbol registry utility.
+\* Only dependency is [`get-symbols`](https://npmjs.com/package/get-symbols), a tiny symbol registry utility.
 
 ## Installation
 

@@ -2,7 +2,7 @@
  * Adds `$super` properties that work like super, but are dynamically bound and thus, can be used from plugins.
  */
 
-import { getSuper } from "../../util/super.js";
+import { getSuper } from "../src/util/super.js";
 
 const provides = {
 	get super () {

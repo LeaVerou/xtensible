@@ -10,6 +10,7 @@ import symbols from "./symbols.js";
 import { defineOwnProperty } from "./util/own.js";
 import { getSuper } from "./util/super.js";
 import { extend } from "./util/objects.js";
+import Hooks from "./hooks.js";
 
 export const { plugins } = symbols;
 

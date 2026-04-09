@@ -65,12 +65,7 @@ export function addPlugin (Class, ...plugin) {
 	Class[plugins].add(plugin);
 
 	if (plugin.provides) {
-		let { constructor: providesStatic, ...provides } = plugin.provides;
-		extend(Class.prototype, provides);
-
-		if (Object.hasOwn(plugin.provides, "constructor")) {
-			extend(Class, providesStatic);
-		}
+		extend(Class.prototype, plugin.provides, { deep: ["constructor"] });
 	}
 
 	// Older form for providing static methods

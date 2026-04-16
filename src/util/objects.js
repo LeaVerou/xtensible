@@ -17,9 +17,10 @@ export function extend (base, plugin, { deep, ignore = ["constructor", "prototyp
 	}
 
 	let descriptors = Object.getOwnPropertyDescriptors(plugin);
-	for (let property in descriptors) {
+	for (let property of Reflect.ownKeys(descriptors)) {
 		if (deep?.has(property)) {
 			extend(base[property], plugin[property], { deep, ignore });
+			continue;
 		}
 		else if (ignore?.has(property)) {
 			continue;

@@ -103,6 +103,35 @@ export default {
 					},
 					expect: "created",
 				},
+				{
+					name: "Preserves prototype.constructor after deep merge",
+					run () {
+						class A {}
+						addPlugin(A, {
+							provides: {
+								constructor: {},
+							},
+						});
+						return new A().constructor === A;
+					},
+					expect: true,
+				},
+				{
+					name: "Preserves symbol-keyed prototype methods",
+					run () {
+						const greet = Symbol("greet");
+						class A {}
+						addPlugin(A, {
+							provides: {
+								[greet] () {
+									return "hi";
+								},
+							},
+						});
+						return new A()[greet]();
+					},
+					expect: "hi",
+				},
 			],
 		},
 	],

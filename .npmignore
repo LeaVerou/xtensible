@@ -1,0 +1,6 @@
+test/
+.vscode/
+.editorconfig
+.prettierrc.json
+.github/
+*.log
